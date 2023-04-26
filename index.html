@@ -22,23 +22,33 @@
     <h1>Mamita Masita Calculadora</h1>
     <div id="header">
       <h2>Crear receta</h2>
-      <button>Guardar</button>
+      <button id="saveRecipe">Guardar</button>
     </div>
     <input
       type="text"
-      id="name"
+      id="recipeName"
       name="name"
       placeholder="Nombre de receta..."
       required
     />
     <div id="ingredients">
-      <input type="text" name="ingredient" placeholder="0%" required />
-      <input
-        type="text"
-        name="ingredient"
-        placeholder="Nombre de ingrediente"
-        required
-      />
+      <div class="ingredient">
+        <input
+          type="text"
+          class="percentage"
+          name="ingredient"
+          placeholder="0"
+          required
+        />
+        <p>%</p>
+        <input
+          type="text"
+          class="name"
+          name="ingredient"
+          placeholder="Nombre de ingrediente"
+          required
+        />
+      </div>
     </div>
     <button id="addIngredient">+ Añadir ingredientes</button>
     <script src="script.js"></script>
