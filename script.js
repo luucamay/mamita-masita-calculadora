@@ -5,16 +5,12 @@ window.addEventListener('load', () => {
 });
 
 // Register Worker Function
-async function registerWorker() {
-  if ('serviceWorker' in navigator) {
-    try {
-      await navigator
-        .serviceWorker
-        .register('serviceworker.js');
-    }
-    catch (e) {
-      console.log('service worker not registered');
-    }
+const registerWorker = () => {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("serviceWorker.js")
+      .then(res => console.log("service worker registered"))
+      .catch(err => console.log("service worker not registered", err))
   }
 }
 
