@@ -5,8 +5,18 @@ Calculadora de pesos y gramos para masa madre
 ## TO DO
 
 - crete a component for ingredient in new recipe with its specific styles
-- transform in a PWA
 - how to locally save values until internet connection indexdb or local storage
+- check what is available ofline
+
+## Done
+
+- transform in a PWA
+
+## Learned
+
+- In order to create a PWA you need 2 main files:
+  - manifest.json
+  - serviceworker.js
 
 ## Resources
 
