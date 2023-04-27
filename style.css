@@ -67,7 +67,7 @@ section#newRecipe {
 }
 
 section#recipeDetails {
-  display: block;
+  display: none;
 }
 
 #weight {
