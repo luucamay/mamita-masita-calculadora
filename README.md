@@ -8,6 +8,11 @@ Calculadora de pesos y gramos para masa madre
 - remove ingredient
 - drag ingredient to change display order
 - Add percentage symbol next to number in the input value for percentage
+- when saving a recipe check input fields are not empty, show error message when a field is empty
+- check input for percentage to maybe use typ "tel" because it could display the digits in android app, but maybe in some browsers shows something different
+- UI for list display could be based on "Now Playing" or "Listonic"
+- edit list
+- remove list
 
 ## TO DO v2
 

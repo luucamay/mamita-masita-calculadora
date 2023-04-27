@@ -61,3 +61,15 @@ p, h1, h2, h3, h4, h5, h6 {
   gap: 8px;
   margin: 8px 0;
 }
+
+section#newRecipe {
+  display: none;
+}
+
+section#recipeDetails {
+  display: block;
+}
+
+#weight {
+  display: flex;
+}
