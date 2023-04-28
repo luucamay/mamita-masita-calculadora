@@ -1,49 +1,56 @@
-const recipeData = [{ name: 'Pan con quinua', ingredients: [{ name: 'harina', percentage: 40, weight: 50 }, { name: 'agua' }] }, { name: 'Pan arcoiris' }]
+const recipeData = [{ name: 'Pan con quinua', weight: 1000, totalPercentage: 100, ingredients: [{ name: 'harina', percentage: 40 }, { name: 'agua', percentage: 60 }] }, { name: 'Pan arcoiris' }]
 /* Views */
 const newRecipeView = document.querySelector('#newRecipe')
 const recipeListView = document.querySelector('#recipeList')
 const recipeDetailsView = document.querySelector('#recipeDetails')
 
 /* View a recipe */
-const viewRecipe = (e) => {
-  const recipeName = e.target.textContent
+const viewRecipe = (recipeName) => {
+  //const recipeName = e.target.textContent
   const recipeObj = recipeData.find(recipe => recipe.name === recipeName)
   const title = recipeDetailsView.querySelector('#recipeName')
   title.textContent = recipeName
   const weight = recipeDetailsView.querySelector('#weight input')
+  weight.addEventListener('input', (e) => updateRecipeWeight(e, recipeObj))
   weight.value = recipeObj.weight
   // create list elements of ingredients
-  recipeDetailsView.appendChild(createListIngredients(recipeObj))
+  const listIngredients = recipeDetailsView.querySelector('#recipeIngredients')
+  const newListIngredients = createListIngredients(recipeObj)
+
+  listIngredients.innerHTML = newListIngredients
+  // newListIngredients && listIngredients.replaceWith(newListIngredients)
+  //recipeDetailsView.appendChild(createListIngredients(recipeObj))
 
   recipeListView.style.display = 'none'
   recipeDetailsView.style.display = 'block'
 }
 
-const createListIngredients = (recipeObj) => {
+const updateRecipeWeight = (e, recipeObj) => {
+  console.log('updating weights')
+  recipeObj.weight = e.target.value
   console.log(recipeObj)
+  viewRecipe(recipeObj.name)
+  // update recipe weight and totalpercentage
+
+}
+
+const createListIngredients = (recipeObj) => {
   const ingredients = recipeObj.ingredients
-  const ingredientListEle = document.createElement('ul')
+  let ingredientList = ''
   if (ingredients && ingredients.length > 0)
     for (const ingredient of ingredients) {
       // create ingredient component
-      const ingredientEle = document.createElement('li')
-      const percentage = document.createElement('p')
-      const name = document.createElement('p')
-      const weight = document.createElement('input')
-      const textUnit = document.createElement('p')
-      percentage.textContent = ingredient.percentage + ' %'
-      name.textContent = ingredient.name
-      weight.value = (recipeObj.weight * ingredient.percentage / recipeObj.totalPercentage).toFixed(1)
-      textUnit.textContent = 'grs'
-      ingredientEle.appendChild(percentage)
-      ingredientEle.appendChild(name)
-      ingredientEle.appendChild(weight)
-      ingredientEle.appendChild(textUnit)
-      ingredientEle.classList.add('ingredient')
-      ingredientListEle.appendChild(ingredientEle)
+      const ingredientWeight = (recipeObj.weight * ingredient.percentage / recipeObj.totalPercentage).toFixed(1)
+      const ingredientEle = `<li class="ingredient">
+      <p>${ingredient.percentage} %</p>
+      <p>${ingredient.name}</p>
+      <input value="${ingredientWeight}" />
+      <p>grs</p>
+      </li>`
+
+      ingredientList += ingredientEle
     }
-  console.log(ingredientListEle)
-  return ingredientListEle
+  return ingredientList
 }
 /* Show recipes */
 const populateRecipeList = () => {
@@ -52,7 +59,7 @@ const populateRecipeList = () => {
   recipeData.forEach((item) => {
     const li = document.createElement("li")
     li.innerText = item.name
-    li.addEventListener('click', viewRecipe)
+    li.addEventListener('click', () => viewRecipe(item.name))
     recipeList.appendChild(li)
   })
 }
