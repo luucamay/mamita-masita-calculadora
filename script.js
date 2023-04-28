@@ -6,7 +6,6 @@ const recipeDetailsView = document.querySelector('#recipeDetails')
 
 /* View a recipe */
 const viewRecipe = (recipeName) => {
-  //const recipeName = e.target.textContent
   const recipeObj = recipeData.find(recipe => recipe.name === recipeName)
   const title = recipeDetailsView.querySelector('#recipeName')
   title.textContent = recipeName
@@ -16,22 +15,15 @@ const viewRecipe = (recipeName) => {
   // create list elements of ingredients
   const listIngredients = recipeDetailsView.querySelector('#recipeIngredients')
   const newListIngredients = createListIngredients(recipeObj)
-
   listIngredients.innerHTML = newListIngredients
-  // newListIngredients && listIngredients.replaceWith(newListIngredients)
-  //recipeDetailsView.appendChild(createListIngredients(recipeObj))
 
   recipeListView.style.display = 'none'
   recipeDetailsView.style.display = 'block'
 }
 
 const updateRecipeWeight = (e, recipeObj) => {
-  console.log('updating weights')
   recipeObj.weight = e.target.value
-  console.log(recipeObj)
-  viewRecipe(recipeObj.name)
-  // update recipe weight and totalpercentage
-
+  viewRecipe(recipeObj.name) // TODO update only the inputs for weights
 }
 
 const createListIngredients = (recipeObj) => {
