@@ -75,6 +75,7 @@ const populateRecipeList = () => {
   recipeList.innerHTML = ''
   recipeData.forEach((item) => {
     const li = document.createElement("li")
+    li.classList.add('recipeItem')
     li.innerText = item.name
     li.addEventListener('click', () => viewRecipe(item.name))
     recipeList.appendChild(li)
