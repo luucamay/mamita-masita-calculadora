@@ -39,3 +39,9 @@ Calculadora de pesos y gramos para masa madre
 - how to make your app intalable https://dev.to/codesphere/how-and-why-to-create-a-progressive-web-app-41kb
 - advanced codelab to make your app instalable https://web.dev/codelab-make-installable/
 - free code camp to create a PWA https://www.freecodecamp.org/news/build-a-pwa-from-scratch-with-html-css-and-javascript/
+
+## timelog
+
+Tue 25/4/2023 -> 2hrs
+Wed 26/4/2023 -> 3hrs 22min
+Thur 27/4/2023 -> 4hrs

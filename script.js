@@ -14,8 +14,9 @@ const viewRecipe = (recipeName) => {
   weight.value = recipeObj.weight
   // create list elements of ingredients
   const listIngredients = recipeDetailsView.querySelector('#recipeIngredients')
+
   const newListIngredients = createListIngredients(recipeObj)
-  listIngredients.innerHTML = newListIngredients
+  listIngredients.replaceWith(newListIngredients)
 
   recipeListView.style.display = 'none'
   recipeDetailsView.style.display = 'block'
@@ -26,23 +27,46 @@ const updateRecipeWeight = (e, recipeObj) => {
   viewRecipe(recipeObj.name) // TODO update only the inputs for weights
 }
 
+const updateRecipeWeightByInput = (e, recipeObj) => {
+  const ingredientWeight = Number(e.target.value)
+  const ingredientEle = e.target.parentNode
+  // get ingredient percentage
+  const ingredientPercentage = Number(ingredientEle.querySelector('p').textContent)
+  recipeObj.weight = ingredientWeight * recipeObj.totalPercentage / ingredientPercentage
+  viewRecipe(recipeObj.name)
+}
+
 const createListIngredients = (recipeObj) => {
   const ingredients = recipeObj.ingredients
-  let ingredientList = ''
+  const ingredientListEle = document.createElement('ul')
+  ingredientListEle.id = 'recipeIngredients'
   if (ingredients && ingredients.length > 0)
     for (const ingredient of ingredients) {
-      // create ingredient component
       const ingredientWeight = (recipeObj.weight * ingredient.percentage / recipeObj.totalPercentage).toFixed(1)
-      const ingredientEle = `<li class="ingredient">
-      <p>${ingredient.percentage} %</p>
-      <p>${ingredient.name}</p>
-      <input value="${ingredientWeight}" />
-      <p>grs</p>
-      </li>`
-
-      ingredientList += ingredientEle
+      // create ingredient component
+      const ingredientEle = document.createElement('li')
+      const percentage = document.createElement('p')
+      const symbol = document.createElement('p')
+      const name = document.createElement('p')
+      const weight = document.createElement('input')
+      const textUnit = document.createElement('p')
+      percentage.textContent = ingredient.percentage
+      symbol.textContent = '%'
+      name.textContent = ingredient.name
+      weight.value = ingredientWeight
+      weight.addEventListener('input', (e) => updateRecipeWeightByInput(e, recipeObj))
+      textUnit.textContent = 'grs'
+      ingredientEle.appendChild(percentage)
+      ingredientEle.appendChild(symbol)
+      ingredientEle.appendChild(name)
+      ingredientEle.appendChild(weight)
+      ingredientEle.appendChild(textUnit)
+      ingredientEle.classList.add('ingredient')
+      ingredientListEle.appendChild(ingredientEle)
     }
-  return ingredientList
+  //return ingredientList
+
+  return ingredientListEle
 }
 /* Show recipes */
 const populateRecipeList = () => {
