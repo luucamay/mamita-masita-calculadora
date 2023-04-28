@@ -11,15 +11,17 @@ const viewRecipe = (e) => {
   const title = recipeDetailsView.querySelector('#recipeName')
   title.textContent = recipeName
   const weight = recipeDetailsView.querySelector('#weight input')
-  weight.value = recipeObj.weight || weight.value
+  weight.value = recipeObj.weight
   // create list elements of ingredients
-  recipeDetailsView.appendChild(createListIngredients(recipeObj.ingredients))
+  recipeDetailsView.appendChild(createListIngredients(recipeObj))
 
   recipeListView.style.display = 'none'
   recipeDetailsView.style.display = 'block'
 }
 
-const createListIngredients = (ingredients) => {
+const createListIngredients = (recipeObj) => {
+  console.log(recipeObj)
+  const ingredients = recipeObj.ingredients
   const ingredientListEle = document.createElement('ul')
   if (ingredients && ingredients.length > 0)
     for (const ingredient of ingredients) {
@@ -31,7 +33,7 @@ const createListIngredients = (ingredients) => {
       const textUnit = document.createElement('p')
       percentage.textContent = ingredient.percentage + ' %'
       name.textContent = ingredient.name
-      weight.value = ingredient.weight
+      weight.value = (recipeObj.weight * ingredient.percentage / recipeObj.totalPercentage).toFixed(1)
       textUnit.textContent = 'grs'
       ingredientEle.appendChild(percentage)
       ingredientEle.appendChild(name)
@@ -120,13 +122,13 @@ const saveRecipe = () => {
   newRecipe.name = document.querySelector("#recipeName").value
   newRecipe.ingredients = []
   newRecipe.weight = 1000
-
+  newRecipe.totalPercentage = 0
   const ingredients = document.querySelector('#ingredients')
   for (const ingredientDiv of ingredients.children) {
     const ingredient = {}
     ingredient.name = ingredientDiv.querySelector('.name').value
-    ingredient.percentage = ingredientDiv.querySelector('.percentage').value
-    ingredient.weight = newRecipe.weight * ingredient.percentage / 100
+    ingredient.percentage = Number(ingredientDiv.querySelector('.percentage').value)
+    newRecipe.totalPercentage += ingredient.percentage
     newRecipe.ingredients.push(ingredient)
   }
 
