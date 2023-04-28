@@ -10,7 +10,7 @@ const viewRecipe = (recipeName) => {
   const title = recipeDetailsView.querySelector('#recipeName')
   title.textContent = recipeName
   const weight = recipeDetailsView.querySelector('#weight input')
-  weight.addEventListener('input', (e) => updateRecipeWeight(e, recipeObj))
+  weight.addEventListener('change', (e) => updateRecipeWeight(e, recipeObj))
   weight.value = recipeObj.weight
   // create list elements of ingredients
   const listIngredients = recipeDetailsView.querySelector('#recipeIngredients')
@@ -42,7 +42,7 @@ const createListIngredients = (recipeObj) => {
   ingredientListEle.id = 'recipeIngredients'
   if (ingredients && ingredients.length > 0)
     for (const ingredient of ingredients) {
-      const ingredientWeight = (recipeObj.weight * ingredient.percentage / recipeObj.totalPercentage).toFixed(1)
+      const ingredientWeight = Math.round((recipeObj.weight * ingredient.percentage / recipeObj.totalPercentage) * 10) / 10;
       // create ingredient component
       const ingredientEle = document.createElement('li')
       const percentage = document.createElement('p')
@@ -54,7 +54,7 @@ const createListIngredients = (recipeObj) => {
       symbol.textContent = '%'
       name.textContent = ingredient.name
       weight.value = ingredientWeight
-      weight.addEventListener('input', (e) => updateRecipeWeightByInput(e, recipeObj))
+      weight.addEventListener('change', (e) => updateRecipeWeightByInput(e, recipeObj))
       textUnit.textContent = 'grs'
       ingredientEle.appendChild(percentage)
       ingredientEle.appendChild(symbol)
