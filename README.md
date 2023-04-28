@@ -27,6 +27,7 @@ Calculadora de pesos y gramos para masa madre
 - check it is available ofline
 - Create the save function
 - Add percentage symbol next to number in the input value for percentage
+- Add style to the view recipes ui
 
 ## Learned
 

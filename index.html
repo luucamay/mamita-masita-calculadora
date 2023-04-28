@@ -20,10 +20,11 @@
   </head>
   <body>
     <section id="newRecipe">
-      <div id="header">
-        <h2>Crear receta</h2>
-        <button id="saveRecipe">Guardar</button>
-      </div>
+      <header>
+        <button id="return"><img src="images/back.svg" /></button>
+        <h1>Crear receta</h1>
+        <button id="saveRecipe"><img src="images/save.svg" /></button>
+      </header>
       <input
         type="text"
         id="recipeName"
@@ -50,7 +51,7 @@
           />
         </div>
       </div>
-      <button id="addIngredient">+ Añadir ingredientes</button>
+      <button id="addIngredient" class="actionBtn">+ Añadir</button>
     </section>
     <section id="recipeList">
       <header>
@@ -58,7 +59,7 @@
         <img id="logo" src="./images/logoMM.svg" />
       </header>
       <ul id="recipes"></ul>
-      <button id="createRecipe">+ Nueva Receta</button>
+      <button id="createRecipe" class="actionBtn">+ Nueva Receta</button>
     </section>
     <section id="recipeDetails">
       <h1 id="recipeName">Nombre de receta</h1>

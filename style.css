@@ -29,6 +29,7 @@ body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  background-color: #fffbf8;
 }
 /*
   6. Improve media defaults
@@ -88,34 +89,32 @@ section#recipeDetails {
   display: flex;
 }
 
-body {
-  background-color: #fffbf8;
-}
-
 header {
   /*background-color: #f7ede2;*/
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 1.5em;
 }
 
 img#logo {
-  width: 96px;
+  width: 72px;
+  height: 72px;
+  margin: 0 -16px;
 }
 
 .recipeItem {
   background-color: #f7ede2;
   list-style-type: none;
   padding: 8px;
-  margin: 16px;
+  margin: 16px 0;
   font-size: 1.5em;
   font-weight: bold;
   border-radius: 8px;
   box-shadow: 4px 4px 8px #b39a80;
 }
 
-#createRecipe {
+.actionBtn {
   position: fixed;
   right: 0;
   bottom: 0;
@@ -125,4 +124,18 @@ img#logo {
   margin: 16px;
   background-color: #b29a80;
   color: #fffbf8;
+}
+
+header button {
+  width: 48px;
+  height: 48px;
+  background-color: #f7ede2;
+}
+
+.percentage {
+  width: 48px;
+}
+
+section {
+  margin: 16px;
 }
