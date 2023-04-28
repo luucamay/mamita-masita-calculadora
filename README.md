@@ -19,6 +19,7 @@ Calculadora de pesos y gramos para masa madre
 - crete a component for ingredient in new recipe with its specific styles
 - sort ingredients from heavier to lighter?
 - how to locally save values until internet connection indexdb or local storage (future version)
+- for each input you should only create the first time but when update only update the values so you do not have to add event listeners and create elements again.
 
 ## Done
 

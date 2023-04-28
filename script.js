@@ -53,6 +53,7 @@ const createListIngredients = (recipeObj) => {
       percentage.textContent = ingredient.percentage
       symbol.textContent = '%'
       name.textContent = ingredient.name
+      weight.type = 'tel'
       weight.value = ingredientWeight
       weight.addEventListener('change', (e) => updateRecipeWeightByInput(e, recipeObj))
       textUnit.textContent = 'grs'
