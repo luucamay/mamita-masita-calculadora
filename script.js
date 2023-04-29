@@ -152,7 +152,7 @@ const saveRecipe = () => {
   const ingredients = document.querySelector('#ingredients')
   for (const ingredientDiv of ingredients.children) {
     const ingredient = {}
-    ingredient.name = ingredientDiv.querySelector('.name').value
+    ingredient.name = ingredientDiv.querySelector('.nameIngredient').value
     ingredient.percentage = Number(ingredientDiv.querySelector('.percentage').value)
     newRecipe.totalPercentage += ingredient.percentage
     newRecipe.ingredients.push(ingredient)
