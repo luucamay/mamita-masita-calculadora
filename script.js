@@ -136,6 +136,15 @@ const openNewRecipeView = () => {
 }
 newRecipeBtn.addEventListener('click', openNewRecipeView)
 
+/* Return to list of recipes */
+const backBtn = document.querySelector('#return')
+const showrecipeListView = () => {
+  recipeListView.style.display = 'block'
+  newRecipeView.style.display = 'none'
+}
+
+backBtn.addEventListener('click', showrecipeListView)
+
 /* Save a recipe */
 const saveRecipeBtn = document.querySelector("#saveRecipe")
 const saveRecipe = () => {
