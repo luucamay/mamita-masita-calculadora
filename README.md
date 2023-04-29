@@ -4,15 +4,13 @@ Calculadora de pesos y gramos para masa madre
 
 ## TO DO
 
-- in the view of an element calculate add listener to an input to calculate the total weight
-- remove ingredient
-- drag ingredient to change display order
 - when saving a recipe check input fields are not empty, show error message when a field is empty
-- check input for percentage to maybe use typ "tel" because it could display the digits in android app, but maybe in some browsers shows something different
-- UI for list display could be based on "Now Playing" or "Listonic"
+- remove ingredient
+- keep the date a recipe is added and show it on top
 - edit recipe
 - remove recipe
-- verificar los calculos de masa madre
+- drag ingredient to change display order
+- save recipes to a local database \*(local storage?) not only on memory
 
 ## TO DO v2
 
@@ -28,6 +26,10 @@ Calculadora de pesos y gramos para masa madre
 - Create the save function
 - Add percentage symbol next to number in the input value for percentage
 - Add style to the view recipes ui
+- check input for percentage to maybe use typ "tel" because it could display the digits in android app, but maybe in some browsers shows something different
+- UI for list display could be based on "Now Playing" or "Listonic"
+- verificar los calculos de masa madre
+- in the view of an element calculate add listener to an input to calculate the total weight
 
 ## Learned
 
