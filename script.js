@@ -7,7 +7,7 @@ const recipeDetailsView = document.querySelector('#recipeDetails')
 /* View a recipe */
 const viewRecipe = (recipeName) => {
   const recipeObj = recipeData.find(recipe => recipe.name === recipeName)
-  const title = recipeDetailsView.querySelector('#recipeName')
+  const title = recipeDetailsView.querySelector('#recipeTitle')
   title.textContent = recipeName
   const weight = recipeDetailsView.querySelector('#weight input')
   weight.addEventListener('change', (e) => updateRecipeWeight(e, recipeObj))
@@ -45,9 +45,11 @@ const createListIngredients = (recipeObj) => {
       const ingredientWeight = Math.round((recipeObj.weight * ingredient.percentage / recipeObj.totalPercentage) * 10) / 10;
       // create ingredient component
       const ingredientEle = document.createElement('li')
+      const percentageDiv = document.createElement('div')
       const percentage = document.createElement('p')
       const symbol = document.createElement('p')
       const name = document.createElement('p')
+      const weightDiv = document.createElement('div')
       const weight = document.createElement('input')
       const textUnit = document.createElement('p')
       percentage.textContent = ingredient.percentage
@@ -57,11 +59,13 @@ const createListIngredients = (recipeObj) => {
       weight.value = ingredientWeight
       weight.addEventListener('change', (e) => updateRecipeWeightByInput(e, recipeObj))
       textUnit.textContent = 'grs'
-      ingredientEle.appendChild(percentage)
-      ingredientEle.appendChild(symbol)
+      percentageDiv.appendChild(percentage)
+      percentageDiv.appendChild(symbol)
+      ingredientEle.appendChild(percentageDiv)
       ingredientEle.appendChild(name)
-      ingredientEle.appendChild(weight)
-      ingredientEle.appendChild(textUnit)
+      weightDiv.appendChild(weight)
+      weightDiv.appendChild(textUnit)
+      ingredientEle.appendChild(weightDiv)
       ingredientEle.classList.add('ingredient')
       ingredientListEle.appendChild(ingredientEle)
     }
@@ -136,14 +140,19 @@ const openNewRecipeView = () => {
 }
 newRecipeBtn.addEventListener('click', openNewRecipeView)
 
-/* Return to list of recipes */
-const backBtn = document.querySelector('#return')
+/* Return to recipe list view */
+const backBtn = document.querySelector('#returnFromCreate')
 const showrecipeListView = () => {
+  console.log('returning to list of recipes')
   recipeListView.style.display = 'block'
   newRecipeView.style.display = 'none'
+  recipeDetailsView.style.display = 'none'
 }
-
 backBtn.addEventListener('click', showrecipeListView)
+
+/* Return to recipe list view */
+const backBtn2 = document.querySelector('#returnFromDetails')
+backBtn2.addEventListener('click', showrecipeListView)
 
 /* Save a recipe */
 const saveRecipeBtn = document.querySelector("#saveRecipe")

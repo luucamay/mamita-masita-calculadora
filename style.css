@@ -71,6 +71,10 @@ h6 {
   isolation: isolate;
 }
 
+section {
+  margin: 16px;
+}
+
 section#newRecipe {
   display: none;
 }
@@ -79,8 +83,10 @@ section#recipeDetails {
   display: none;
 }
 
-#weight {
-  display: flex;
+img#logo {
+  width: 72px;
+  height: 72px;
+  margin: 0 -16px;
 }
 
 header {
@@ -91,10 +97,10 @@ header {
   font-size: 1.5em;
 }
 
-img#logo {
-  width: 72px;
-  height: 72px;
-  margin: 0 -16px;
+header button {
+  width: 48px;
+  height: 48px;
+  background-color: #f7ede2;
 }
 
 .recipeItem {
@@ -120,16 +126,7 @@ img#logo {
   color: #fffbf8;
 }
 
-header button {
-  width: 48px;
-  height: 48px;
-  background-color: #f7ede2;
-}
-
-section {
-  margin: 16px;
-}
-
+/* Create recipe*/
 #recipeName {
   width: 100%;
   padding: 8px;
@@ -139,8 +136,8 @@ section {
   font-size: 1.5em;
 }
 
-/* Create recipe: ingredients list*/
-#ingredients {
+#ingredients,
+#recipeIngredients {
   background-color: #f6f6f6;
   padding: 8px 0;
   border-radius: 8px;
@@ -153,10 +150,25 @@ section {
   font-size: 1.2em;
   border-radius: 8px;
 }
+
 .ingredient input {
   padding: 8px;
   border-radius: 8px;
 }
+
+#recipeIngredients .ingredient {
+  justify-content: space-around;
+}
+
+#recipeIngredients .ingredient div {
+  display: flex;
+  align-items: center;
+}
+
+#recipeIngredients input {
+  width: 4em;
+}
+
 .nameIngredient {
   margin-left: 16px;
   width: 100%;
@@ -164,4 +176,22 @@ section {
 
 .percentage {
   width: 56px;
+}
+
+/* View Recipe Details */
+
+#weight {
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+}
+
+#weight input {
+  width: 4em;
+  margin-left: 24px;
+  margin-right: 4px;
+  padding: 8px;
+  border-radius: 8px;
 }
