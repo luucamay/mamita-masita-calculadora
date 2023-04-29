@@ -1,4 +1,20 @@
-const recipeData = [{ name: 'Pan con quinua', weight: 1000, totalPercentage: 100, ingredients: [{ name: 'harina', percentage: 40 }, { name: 'agua', percentage: 60 }] }, { name: 'Pan arcoiris' }]
+const recipeData = [
+  {
+    name: 'Pan con quinua', weight: 1000, totalPercentage: 187,
+    ingredients: [
+      { name: 'Harina', percentage: 96 },
+      { name: 'Agua', percentage: 65 },
+      { name: 'Masa Madre', percentage: 20 },
+      { name: 'Canahua', percentage: 4 },
+      { name: 'Sal', percentage: 2 }]
+  },
+  {
+    name: 'Pan arcoiris', weight: 1000, totalPercentage: 102,
+    ingredients: [
+      { name: 'Harina', percentage: 96 },
+      { name: 'Canahua', percentage: 4 },
+      { name: 'Sal', percentage: 2 }]
+  }]
 /* Views */
 const newRecipeView = document.querySelector('#newRecipe')
 const recipeListView = document.querySelector('#recipeList')
@@ -27,8 +43,8 @@ const updateRecipeWeight = (e, recipeObj) => {
   viewRecipe(recipeObj.name) // TODO update only the inputs for weights
 }
 
-const updateRecipeWeightByInput = (e, recipeObj) => {
-  const ingredientWeight = Number(e.target.value)
+const updateRecipeWeightByInput = (ingredientWeightVal, recipeObj) => {
+  const ingredientWeight = Number(ingredientWeightVal)
   const ingredientEle = e.target.parentNode
   // get ingredient percentage
   const ingredientPercentage = Number(ingredientEle.querySelector('p').textContent)
@@ -57,7 +73,7 @@ const createListIngredients = (recipeObj) => {
       name.textContent = ingredient.name
       weight.type = 'tel'
       weight.value = ingredientWeight
-      weight.addEventListener('change', (e) => updateRecipeWeightByInput(e, recipeObj))
+      weight.addEventListener('change', (e) => updateRecipeWeightByInput(weight.value, recipeObj))
       textUnit.textContent = 'grs'
       percentageDiv.appendChild(percentage)
       percentageDiv.appendChild(symbol)
