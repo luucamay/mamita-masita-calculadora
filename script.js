@@ -113,7 +113,7 @@ const addIngredient = () => {
   ingredient.classList.add('ingredient')
   ingName.placeholder = "nombre de ingrediente"
   ingPercentage.placeholder = "0"
-  ingName.classList.add('name')
+  ingName.classList.add('nameIngredient')
   ingPercentage.classList.add('percentage')
   ingPercentage.type = 'tel'
   ingredient.appendChild(ingPercentage)
