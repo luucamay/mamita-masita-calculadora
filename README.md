@@ -49,3 +49,4 @@ Calculadora de pesos y gramos para masa madre
 Tue 25/4/2023 -> 2hrs
 Wed 26/4/2023 -> 3hrs 22min
 Thur 27/4/2023 -> 4hrs
+Fri 28/04/2023 -> 5hrs

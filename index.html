@@ -33,22 +33,18 @@
         required
       />
       <div id="ingredients">
-        <div class="ingredient">
-          <input
-            type="tel"
-            class="percentage"
-            name="ingredient"
-            placeholder="0"
-            required
-          />
+        <div class="ingredient" id="ingredient_1">
+          <input type="tel" class="percentage" placeholder="0" required />
           <p>%</p>
           <input
             type="text"
             class="nameIngredient"
-            name="ingredient"
             placeholder="Nombre de ingrediente"
             required
           />
+          <button class="trashIngBtn">
+            <img src="images/trash.svg" />
+          </button>
         </div>
       </div>
       <button id="addIngredient" class="actionBtn">+ Añadir</button>

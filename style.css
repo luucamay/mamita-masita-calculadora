@@ -159,6 +159,13 @@ header button {
   border-radius: 8px;
 }
 
+.trashIngBtn {
+  width: 48px;
+  height: 48px;
+  background-color: inherit;
+  border-radius: 8px;
+}
+
 #recipeIngredients .ingredient {
   justify-content: space-between;
   padding: 0 8px;

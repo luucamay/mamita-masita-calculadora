@@ -118,31 +118,49 @@ const registerWorker = () => {
   }
 }
 
-
+/* Remove current ingredient */
+const firstTrashIngBtn = document.querySelector('.trashIngBtn')
+const firstIngDiv = document.querySelector('#ingredient_1')
+const removeIngredient = (ingContainer) => {
+  ingContainer.remove();
+  // if in edit mode remove ingredient also from databse and update total calculations
+}
+firstTrashIngBtn.addEventListener('click', () => removeIngredient(firstIngDiv))
 
 /* Add a new ingredient */
+let ingredientCounter = 1
 const addIngredientBtn = document.querySelector("#addIngredient")
 const addIngredient = () => {
+  ingredientCounter += 1
   // create new ingredient component
   const ingredient = document.createElement("div")
   const ingPercentage = document.createElement("input")
   const symbol = document.createElement("p")
   const ingName = document.createElement("input")
+  const trashIngBtn = document.createElement("button")
+  const trashIngImg = document.createElement("img")
+  ingredient.id = 'ingredient_' + ingredientCounter
   symbol.textContent = '%'
   ingredient.classList.add('ingredient')
   ingName.placeholder = "nombre de ingrediente"
-  ingPercentage.placeholder = "0"
+  ingPercentage.placeholder = 0
   ingName.classList.add('nameIngredient')
   ingPercentage.classList.add('percentage')
   ingPercentage.type = 'tel'
+  trashIngBtn.classList.add('trashIngBtn')
+  trashIngImg.src = 'images/trash.svg'
+  trashIngBtn.appendChild(trashIngImg)
+  trashIngBtn.addEventListener('click', () => removeIngredient(ingredient))
   ingredient.appendChild(ingPercentage)
   ingredient.appendChild(symbol)
   ingredient.appendChild(ingName)
+  ingredient.appendChild(trashIngBtn)
   const ingredients = document.getElementById("ingredients")
   ingredients.appendChild(ingredient)
 
+
 }
-addIngredientBtn.addEventListener("click", addIngredient)
+addIngredientBtn.addEventListener("click", () => addIngredient())
 
 /**
  * create a new recipe
@@ -152,6 +170,7 @@ const newRecipeBtn = document.querySelector('#createRecipe')
 const openNewRecipeView = () => {
   newRecipeView.style.display = 'block'
   recipeListView.style.display = 'none'
+  ingredientCounter = 1
 }
 newRecipeBtn.addEventListener('click', openNewRecipeView)
 
